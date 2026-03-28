@@ -1,11 +1,23 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/VictorLeung91/my-cra-app.git'
+            }
+        }
+
         stage('Build') {
             agent {
                 docker {
                     image 'node:22'
+                    reuseNode true
                 }
             }
             steps {
@@ -18,6 +30,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:22'
+                    reuseNode true
                 }
             }
             steps {
