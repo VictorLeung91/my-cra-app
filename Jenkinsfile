@@ -7,11 +7,11 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/VictorLeung91/my-cra-app.git'
-            }
-        }
+stage('Checkout') {
+    steps {
+        git branch: 'main', url: 'https://github.com/VictorLeung91/my-cra-app.git'
+    }
+}
 
         stage('Build') {
             agent {
